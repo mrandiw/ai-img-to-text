@@ -27,24 +27,16 @@ Key features:
 - Effective for generating natural language descriptions of images
 - Supports zero-shot image captioning
 
-Example usage in code:
-```python
-from transformers import BlipProcessor, BlipForConditionalGeneration
-from PIL import Image
+### stepfun-ai/GOT-OCR-2.0-hf
 
-# Load model and processor
-processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
-model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
+This project also incorporates the GOT-OCR-2.0 model from stepfun-ai for optical character recognition tasks. This model excels at extracting text from images, documents, and other visual content.
 
-# Process image
-image = Image.open("path/to/image.jpg")
-inputs = processor(image, return_tensors="pt")
+Key features:
+- Designed specifically for OCR (Optical Character Recognition) tasks
+- High accuracy for text extraction from various document types
+- Supports multiple languages and font styles
+- Optimized for both printed and handwritten text recognition
 
-# Generate caption
-output = model.generate(**inputs)
-caption = processor.decode(output[0], skip_special_tokens=True)
-print(caption)
-```
 
 ## Setup Instructions
 
@@ -69,6 +61,7 @@ Install the necessary Python packages:
 ```bash
 pip install pillow
 pip install transformers
+pip install accelerate
 pip install gradio
 # for NVIDIA GPU
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 
@@ -78,7 +71,11 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 
 After installation, run the application using:
 ```bash
-python main.py
+# for image captioning
+python main.py 
+
+# for OCR
+python ocr.py
 ```
 
 Then open your web browser and navigate to the URL displayed in the terminal (typically http://127.0.0.1:7860).
