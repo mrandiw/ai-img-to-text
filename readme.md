@@ -85,3 +85,8 @@ Then open your web browser and navigate to the URL displayed in the terminal (ty
 - Python 3.8 or higher
 - CUDA-compatible GPU (optional, for faster processing)
 - Internet connection (for initial model download)
+
+## Downloaded Model Located in 
+```bash
+C:\Users\User\.cache\huggingface
+```
