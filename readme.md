@@ -16,6 +16,36 @@ This tool allows users to upload images and receive AI-generated text descriptio
 - Support for various image formats
 - GPU acceleration for faster processing
 
+## Supported Models
+
+### Salesforce/blip-image-captioning-base
+
+This project uses the BLIP (Bootstrapping Language-Image Pre-training) model from Salesforce for image captioning. The base model offers a good balance between performance and resource requirements.
+
+Key features:
+- Pre-trained on over 14 million image-text pairs
+- Effective for generating natural language descriptions of images
+- Supports zero-shot image captioning
+
+Example usage in code:
+```python
+from transformers import BlipProcessor, BlipForConditionalGeneration
+from PIL import Image
+
+# Load model and processor
+processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
+model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
+
+# Process image
+image = Image.open("path/to/image.jpg")
+inputs = processor(image, return_tensors="pt")
+
+# Generate caption
+output = model.generate(**inputs)
+caption = processor.decode(output[0], skip_special_tokens=True)
+print(caption)
+```
+
 ## Setup Instructions
 
 ### 1. Environment Preparation
